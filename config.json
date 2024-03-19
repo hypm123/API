@@ -1,0 +1,12 @@
+{
+    "domain":"http://localhost:3000",
+    
+    "config":"config.json",
+
+    "mongodb":{
+        "server":"cluster0.nzobcjm.mongodb.net",
+        "username":"data2",
+        "password":"data2",
+        "dbname":"TEST_API"
+    }
+}
