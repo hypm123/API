@@ -12,7 +12,7 @@ auto()
 function auto(){
     orderModel.find({ 
         state: "prossing",
-        recoveryTime: { $lt: Date.now() } 
+        recoveryTime: { $lt: Date.now()+5000 } 
     })
     .then(async  data => {
 
@@ -54,7 +54,23 @@ function auto(){
                                     }
                                 })
                             }else{
-                                console.log('errr')
+                                 orderModel.findOneAndUpdate(
+                                    { hash: hash}, // Điều kiện tìm kiếm
+                                    { 
+                                        $set: { 
+                                            state: 'err',
+                                        }
+                                    },
+                                    { new: true } // Tùy chọn để trả về bản ghi sau khi đã được cập nhật
+                                )
+                                .then(updatedOrder => {
+                                    if (updatedOrder.state == 'err') {
+                                        console.log('err')
+                                        setTimeout(auto, 5000);
+                                    } else {
+                                        res.status(404).json({ 'code': 0, 'message': 'Order not found.' });
+                                    }
+                                })
                             }
                         }
                     })
