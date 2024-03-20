@@ -10,6 +10,7 @@ const orderModel = require('../Models/order');
 auto()
 
 function auto(){
+    console.log(Date.now()+5000 )
     orderModel.find({ 
         state: "prossing",
         recoveryTime: { $lt: Date.now()+5000 } 
