@@ -102,26 +102,26 @@ async function buy_funaa(privateKeyTron,address,toAddress, amount, resource) {
         var bandwidth = estimateBandwidth(signature); //bandwidth sử dụng
         // check = await tronWeb.trx.getDelegatedResourceV2(address, toAddress)
         if(bandwidth_balance > bandwidth){
-            // const broadcast = await tronWeb.trx.sendRawTransaction(signature);
-            var broadcast = {
-                result: true,
-                txid: 'e7da84877bfa0158b1eb8810bc0e3c9d36c61e19b5b3b246323b45971dcc97aa',
-                transaction: {
-                    visible: false,
-                    txID: 'e7da84877bfa0158b1eb8810bc0e3c9d36c61e19b5b3b246323b45971dcc97aa',
-                    raw_data_hex: '0a023dcb22087e74d966acca37df40f0928994e5315a720839126e0a35747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e44656c65676174655265736f75726365436f6e747261637412350a1541971ff6b1b0f8bb13780d7646d58589a303d1f62510011880ade204221541fc17285dc8ab86f344a5bd37af730295e26198827090be8594e531',
-                    raw_data: {
-                    contract: [Array],
-                    ref_block_bytes: '3dcb',
-                    ref_block_hash: '7e74d966acca37df',
-                    expiration: 1710781254000,
-                    timestamp: 1710781194000
-                    },
-                    signature: [
-                    '5076ab832e755bf09e2249e9bdba284f94afa34ce79490520ac20474520c0ab64e9f551ae942452a935ad604fda959f9dbf3382c2cbc27253330a3ae2cd76c4f1C'
-                    ]
-                }
-            }
+            const broadcast = await tronWeb.trx.sendRawTransaction(signature);
+            // var broadcast = {
+            //     result: true,
+            //     txid: 'e7da84877bfa0158b1eb8810bc0e3c9d36c61e19b5b3b246323b45971dcc97aa',
+            //     transaction: {
+            //         visible: false,
+            //         txID: 'e7da84877bfa0158b1eb8810bc0e3c9d36c61e19b5b3b246323b45971dcc97aa',
+            //         raw_data_hex: '0a023dcb22087e74d966acca37df40f0928994e5315a720839126e0a35747970652e676f6f676c65617069732e636f6d2f70726f746f636f6c2e44656c65676174655265736f75726365436f6e747261637412350a1541971ff6b1b0f8bb13780d7646d58589a303d1f62510011880ade204221541fc17285dc8ab86f344a5bd37af730295e26198827090be8594e531',
+            //         raw_data: {
+            //         contract: [Array],
+            //         ref_block_bytes: '3dcb',
+            //         ref_block_hash: '7e74d966acca37df',
+            //         expiration: 1710781254000,
+            //         timestamp: 1710781194000
+            //         },
+            //         signature: [
+            //         '5076ab832e755bf09e2249e9bdba284f94afa34ce79490520ac20474520c0ab64e9f551ae942452a935ad604fda959f9dbf3382c2cbc27253330a3ae2cd76c4f1C'
+            //         ]
+            //     }
+            // }
             if(broadcast.result === true){
                 return{
                     code: true,
